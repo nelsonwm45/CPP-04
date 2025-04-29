@@ -13,7 +13,8 @@ WHITE='\033[0;97m'
 PINK  = '\033[35m'
 
 # Program Name
-NAME = ClapTrap
+NAME = Animal
+SUB_NAME = WrongAnimal
 
 # Compiler
 CC = c++
@@ -26,8 +27,15 @@ SRCS =	main.cpp \
 		Animal.cpp \
 		Cat.cpp \
 		Dog.cpp \
+		test.cpp \
+		
+WRONG_SCS = Wrongmain.cpp \
+			WrongAnimal.cpp \
+			WrongCat.cpp \
 
 OBJ = $(SRCS:.cpp=.o)
+
+WRONG_OBJ = $(WRONG_SCS:.cpp=.o)
 
 # Rules
 all: $(NAME)
@@ -44,12 +52,22 @@ $(NAME): $(OBJ)
 %.o: %.cpp
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
+wrong: $(SUB_NAME)
+
+$(SUB_NAME): $(WRONG_OBJ)
+	@ echo $(GREEN)" 🍕 Compiling "$(RED)"[$(SUB_NAME)]"$(GREEN)"..."$(RESET)
+	@ $(CC) $(CFLAGS) $(WRONG_OBJ) -o $(SUB_NAME)
+	@ echo $(RED)" 🍟 [$(SUB_NAME)]"$(GREEN)" successfully compiled!"$(RESET)
+	@ echo $(GREEN)" 🌭 Your"$(RED)" [$(SUB_NAME)] "$(GREEN)"is ready to use"$(RESET)
+
 clean:
 	@ echo $(CYAN)" 🥨 Cleaning Object Files..."$(RESET)
 	@ $(RM) $(OBJ)
+	@ $(RM) $(WRONG_OBJ)
 
 fclean: clean
-	@ echo $(MAGENTA)" 🥯 Removing "$(RED)"[$(NAME)]"$(GREEN)"..."$(RESET)
+	@ echo $(MAGENTA)" 🥯 Removing "$(RED)"[$(NAME)]"$(MAGENTA)" && "$(RED)"[$(SUB_NAME)]"$(GREEN)"..."$(RESET)
 	@ $(RM) $(NAME)
+	@ $(RM) $(SUB_NAME)
 
 re : fclean all

@@ -2,7 +2,7 @@
 
 // Default Constructor
 Cat::Cat(void):
-	_type("Cat")
+	Animal("Cat")
 {
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Default constructor called\n" << RESET;
 	std::cout << MAGENTA << "[Cat] " << GREEN << _type << " is constructed" << RESET << std::endl;
@@ -10,7 +10,7 @@ Cat::Cat(void):
 
 // Copy Constructor
 Cat::Cat(const Cat &other):
-	_type(other._type)
+	Animal(other._type)
 {
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Copy construtor called\n" << RESET;
 	std::cout << MAGENTA << "[Cat] " << GREEN << _type << " is constructed" << RESET << std::endl;
@@ -19,9 +19,11 @@ Cat::Cat(const Cat &other):
 // Copy Assignment Operator
 Cat	&Cat::operator=(const Cat &other)
 {
-	if (this != other)
+	if (this != &other)
+	{
 		this->_type = other._type;
 		std::cout << MAGENTA << "[Cat] " << GREEN << "Copy assignment operator called\n" << RESET;
+	}
 	return (*this);
 }
 
@@ -31,7 +33,13 @@ Cat::~Cat(void)
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Destructor called\n" << RESET;
 }
 
-void	Cat::makeSound(void)
+void	Cat::makeSound(void) const
 {
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Meow~~~~~~\n" << RESET;
+}
+
+std::ostream	&operator<<(std::ostream &output, const Cat &other)
+{
+	output << other.getType();
+	return (output);
 }

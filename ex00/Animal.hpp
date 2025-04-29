@@ -20,7 +20,19 @@
 #  define UINT32_MAX 4294967295U
 # endif
 
+/*
+	Adding virtual to base class function allows it to be overridden by derived class
+		at runtime (polymorphism)/dynamic polymorphism
 
+	Compile-time polymorphism
+		Function overloading
+		Operator overloading
+		Template programming
+
+	Adding virtual to destructor
+		- allows deleting a base class pointer to a derived object safely 
+		— destroying the derived part first, then the base class
+*/
 class	Animal
 {
 	protected:
@@ -28,11 +40,12 @@ class	Animal
 
 	public:
 		Animal(void);
+		Animal(std::string p_type);
 		Animal(const Animal &other);
 		Animal	&operator=(const Animal &other);
 		virtual	~Animal(void);
 
-		void	makeSound();
+		virtual void	makeSound() const;
 
 		// Setters
 		void	setType(std::string p_type);
@@ -41,5 +54,6 @@ class	Animal
 		std::string		getType() const;
 };
 
+std::ostream	&operator<<(std::ostream &output, const Animal &other);
 
 #endif

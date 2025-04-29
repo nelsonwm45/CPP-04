@@ -1,7 +1,7 @@
-#ifndef CAT_HPP
-#define CAT_HPP
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
 #include <iostream>
 
@@ -30,8 +30,9 @@ class	Cat : public Animal
 		Cat	&operator=(const Cat &other);
 		~Cat(void);
 
-		void	makeSound(void);
+		void	makeSound(void) const;
 };
 
+std::ostream	&operator<<(std::ostream &output, const Cat &other);
 
 #endif

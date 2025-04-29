@@ -1,5 +1,5 @@
-#ifndef DOG_HPP
-#define DOG_HPP
+#ifndef CAT_HPP
+#define CAT_HPP
 
 #include "Animal.hpp"
 
@@ -22,16 +22,17 @@
 #  define UINT32_MAX 4294967295U
 # endif
 
-class	Dog : public Animal
+class	Cat : public Animal
 {
 	public:
-		Dog(void);
-		Dog(const Dog &other);
-		Dog	&operator=(const Dog &other);
-		~Dog(void);
+		Cat(void);
+		Cat(const Cat &other);
+		Cat	&operator=(const Cat &other);
+		~Cat(void);
 
-		void	makeSound(void);
+		void	makeSound(void) const;
 };
 
+std::ostream	&operator<<(std::ostream &output, const Cat &other);
 
 #endif
