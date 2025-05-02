@@ -19,10 +19,10 @@ Cat::Cat(const Cat &other):
 // Copy Assignment Operator
 Cat	&Cat::operator=(const Cat &other)
 {
+	std::cout << MAGENTA << "[Cat] " << GREEN << "Copy assignment operator called\n" << RESET;
 	if (this != &other)
 	{
 		this->_type = other._type;
-		std::cout << MAGENTA << "[Cat] " << GREEN << "Copy assignment operator called\n" << RESET;
 	}
 	return (*this);
 }

@@ -27,10 +27,10 @@ Animal::Animal(const Animal &other):
 // Copy Assignment Operator
 Animal	&Animal::operator=(const Animal &other)
 {
+	std::cout << BLUE << "[Animal] " << GREEN << "Copy assignment operator called\n" << RESET;
 	if (this != &other)
 	{
 		this->_type = other._type;
-		std::cout << BLUE << "[Animal] " << GREEN << "Copy assignment operator called\n" << RESET;
 	}
 	return (*this);
 }
