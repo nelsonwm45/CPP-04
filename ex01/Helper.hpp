@@ -29,5 +29,7 @@ void	from_pdf(void);
 
 // from pdf ex01
 void	brain_pdf_test(void);
+void	animal_array_test(void);
+void	deep_copy_test(void);
 
 #endif

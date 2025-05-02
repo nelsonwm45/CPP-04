@@ -3,6 +3,15 @@
 #include "Dog.hpp"
 #include "Helper.hpp"
 
+/*
+	Shallow copy
+	→ copies only the pointer, not the data it points to.
+	→ After copying, both objects share the same memory.
+
+	Deep copy 
+	→ copies the actual data to a new memory location, 
+		so both objects are fully independent.
+*/
 void	pointer_test(void)
 {
 	animal_pointer();
@@ -32,4 +41,5 @@ int	main()
 	pointer_test();
 	from_pdf();
 	brain_pdf_test();
+	animal_array_test();
 }

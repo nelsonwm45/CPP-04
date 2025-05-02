@@ -147,8 +147,42 @@ void	brain_pdf_test(void)
 {
 	std::cout << YELLOW << "----------FROM PDF EX01 TEST----------\n" << RESET;
 	
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	const	Animal* j = new Dog();
+	const	Animal* i = new Cat();
 	delete j; //should not create a leak
 	delete i;
+}
+
+void	animal_array_test(void)
+{
+	std::cout << YELLOW << "----------ANIMAL ARRAY TEST----------\n" << RESET;
+
+	const Animal	*animals[10];
+
+	// Half of them, it's Cat
+	for (int i = 0; i <= 4; i++)
+	{
+		animals[i] = new Cat;
+	}
+	// Half of them, it's Dog
+	for (int i = 5; i < 10; i++)
+	{
+		animals[i] = new Dog;
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		delete animals[i];
+	}
+}
+
+void	deepcopy_cat_test(void)
+{
+	std::cout << YELLOW << "----------DEEP COPY CAT TEST----------\n" << RESET;
+
+	Cat	basic;
+	{
+		Cat	tmp = basic;
+		
+		
+	}
 }

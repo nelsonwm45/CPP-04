@@ -2,6 +2,7 @@
 #define BRAIN_HPP
 
 #include <iostream>
+#include <cstddef> // size_t
 
 # define RED "\033[31m"
 # define GREEN "\033[32m"
@@ -45,10 +46,10 @@ class	Brain
 		virtual	~Brain(void);
 
 		// Setters
-		// void	setIdeas(std::string p_type);
+		void	setIdeas(std::string p_ideas, size_t p_index);
 
 		// Getters
-		// std::string		getIdeas() const;
+		std::string		getIdeas(size_t p_index) const;
 };
 
 // std::ostream	&operator<<(std::ostream &output, const Brain &other);

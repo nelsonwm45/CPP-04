@@ -38,16 +38,16 @@ Brain::~Brain(void)
 }
 
 // Setters
-// void	Brain::setIdeas(std::string	p_ideas)
-// {
-// 	this->_ideas[0] = p_ideas;
-// }
+void	Brain::setIdeas(std::string	p_ideas, size_t p_index)
+{
+	this->_ideas[p_index] = p_ideas;
+}
 
 // Getters
-// std::string	Brain::getIdeas(void) const
-// {
-// 	return (this->_ideas[0]);
-// }
+std::string	Brain::getIdeas(size_t p_index) const
+{
+	return (this->_ideas[p_index]);
+}
 
 // std::ostream	&operator<<(std::ostream &output, const Brain &other)
 // {

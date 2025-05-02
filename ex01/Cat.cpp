@@ -55,6 +55,16 @@ void	Cat::makeSound(void) const
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Meow~~~~~~\n" << RESET;
 }
 
+void	Cat::setIdeas(std::string p_ideas, size_t p_index)
+{
+	this->setIdeas(p_ideas, p_index);
+}
+
+std::string	Cat::getIdeas(size_t p_index) const
+{
+	return (this->getIdeas(p_index));
+}
+
 std::ostream	&operator<<(std::ostream &output, const Cat &other)
 {
 	output << other.getType();

@@ -35,6 +35,12 @@ class	Dog : public Animal
 		~Dog(void);
 
 		void	makeSound(void) const;
+
+		// Setters
+		void	setIdeas(std::string p_ideas, size_t p_index);
+
+		// Getters
+		std::string		getIdeas(size_t p_index) const;
 };
 
 std::ostream	&operator<<(std::ostream &output, const Dog &other);

@@ -50,6 +50,16 @@ void	Dog::makeSound(void) const
 	std::cout << YELLOW << "[Dog] " << GREEN << "Bark~~~~~~\n" << RESET;
 }
 
+void	Dog::setIdeas(std::string p_ideas, size_t p_index)
+{
+	this->setIdeas(p_ideas, p_index);
+}
+
+std::string	Dog::getIdeas(size_t p_index) const
+{
+	return (this->getIdeas(p_index));
+}
+
 std::ostream	&operator<<(std::ostream &output, const Dog &other)
 {
 	output << other.getType();
