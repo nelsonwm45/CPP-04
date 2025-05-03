@@ -12,6 +12,11 @@
 	→ copies the actual data to a new memory location, 
 		so both objects are fully independent.
 */
+void	deep_copy_test(void)
+{
+	deepcopy_cat_test();
+	deepcopy_dog_test();
+}
 void	pointer_test(void)
 {
 	animal_pointer();
@@ -42,4 +47,5 @@ int	main()
 	from_pdf();
 	brain_pdf_test();
 	animal_array_test();
+	deep_copy_test();
 }

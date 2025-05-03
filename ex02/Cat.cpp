@@ -2,7 +2,7 @@
 
 // Default Constructor
 Cat::Cat(void):
-	Animal("Cat"), _brain(new Brain)
+	AAnimal("Cat"), _brain(new Brain)
 {
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Default constructor called\n" << RESET;
 	std::cout << MAGENTA << "[Cat] " << GREEN << _type << " is constructed" << RESET << std::endl;
@@ -21,7 +21,7 @@ Cat::Cat(void):
 
 // Copy Constructor
 Cat::Cat(const Cat &other):
-	Animal(other._type)
+	AAnimal(other._type)
 {
 	std::cout << MAGENTA << "[Cat] " << GREEN << "Copy construtor called\n" << RESET;
 	std::cout << MAGENTA << "[Cat] " << GREEN << _type << " is constructed" << RESET << std::endl;

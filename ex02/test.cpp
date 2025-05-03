@@ -1,15 +1,15 @@
 #include "Helper.hpp"
 
-void	animal_ocf_test(void)
-{
-	std::cout << YELLOW << "----------ANIMAL OCF TEST----------\n" << RESET;
-	Animal	a1;
-	Animal	a2(a1);
-	Animal	a3;
+// void	animal_ocf_test(void)
+// {
+// 	std::cout << YELLOW << "----------ANIMAL OCF TEST----------\n" << RESET;
+// 	Animal	a1;
+// 	Animal	a2(a1);
+// 	Animal	a3;
 
-	a3 = a2;
-	std::cout << BLUE << "a3: " << a3.getType() << RESET << std::endl;
-}
+// 	a3 = a2;
+// 	std::cout << BLUE << "a3: " << a3.getType() << RESET << std::endl;
+// }
 
 void	cat_ocf_test(void)
 {
@@ -33,30 +33,30 @@ void	dog_ocf_test(void)
 	std::cout << BLUE << "d3: " << d3.getType() << RESET << std::endl;
 }
 
-void	setter_test(void)
-{
-	std::cout << YELLOW << "----------SETTER TEST----------\n" << RESET;
-	Animal	a1;
+// void	setter_test(void)
+// {
+// 	std::cout << YELLOW << "----------SETTER TEST----------\n" << RESET;
+// 	Animal	a1;
 
-	a1.setType("General_UwU");
-	std::cout << BLUE << "a1: " << a1.getType() << RESET << std::endl;
+// 	a1.setType("General_UwU");
+// 	std::cout << BLUE << "a1: " << a1.getType() << RESET << std::endl;
 
-	Cat	c1;
-	c1.setType("Cat_UwU");
-	std::cout << BLUE << "c1: " << c1.getType() << RESET << std::endl;
+// 	Cat	c1;
+// 	c1.setType("Cat_UwU");
+// 	std::cout << BLUE << "c1: " << c1.getType() << RESET << std::endl;
 	
-	Dog	d1;
-	d1.setType("Dog_UwU");
-	std::cout << BLUE << "d1: " << d1.getType() << RESET << std::endl;
-}
+// 	Dog	d1;
+// 	d1.setType("Dog_UwU");
+// 	std::cout << BLUE << "d1: " << d1.getType() << RESET << std::endl;
+// }
 
-void	animal_makeSound(void)
-{
-	std::cout << YELLOW << "----------ANIMAL MAKESOUND TEST----------\n" << RESET;
-	Animal	a1;
+// void	animal_makeSound(void)
+// {
+// 	std::cout << YELLOW << "----------ANIMAL MAKESOUND TEST----------\n" << RESET;
+// 	Animal	a1;
 
-	a1.makeSound();
-}
+// 	a1.makeSound();
+// }
 
 void	cat_makeSound(void)
 {
@@ -74,21 +74,21 @@ void	dog_makeSound(void)
 	d1.makeSound();
 }
 
-void	animal_pointer(void)
-{
-	std::cout << YELLOW << "----------ANIMAL POINTER TEST----------\n" << RESET;
-	Animal	*a1 = new Animal;
-	a1->makeSound();
-	delete a1;
+// void	animal_pointer(void)
+// {
+// 	std::cout << YELLOW << "----------ANIMAL POINTER TEST----------\n" << RESET;
+// 	Animal	*a1 = new Animal;
+// 	a1->makeSound();
+// 	delete a1;
 
-	a1 = new Cat;
-	a1->makeSound();
-	delete a1;
+// 	a1 = new Cat;
+// 	a1->makeSound();
+// 	delete a1;
 
-	a1 = new Dog;
-	a1->makeSound();
-	delete a1;
-}
+// 	a1 = new Dog;
+// 	a1->makeSound();
+// 	delete a1;
+// }
 
 /*
 	A Derived class Pointer cannot point back to Base class
@@ -129,26 +129,26 @@ void	from_pdf(void)
 {
 	std::cout << YELLOW << "----------FROM PDF EX00 TEST----------\n" << RESET;
 
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	// const Animal* meta = new Animal();
+	const AAnimal* j = new Dog();
+	const AAnimal* i = new Cat();
 	std::cout << j->getType() << " " << std::endl; // Dog
 	std::cout << i->getType() << " " << std::endl; // Cat
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
-	meta->makeSound();
+	// meta->makeSound();
 
 	delete i; // Delete Cat
 	delete j; // Delete Dog
-	delete meta; // Delete Animal
+	// delete meta; // Delete Animal
 }
 
 void	brain_pdf_test(void)
 {
 	std::cout << YELLOW << "----------FROM PDF EX01 TEST----------\n" << RESET;
 	
-	const	Animal* j = new Dog();
-	const	Animal* i = new Cat();
+	const	AAnimal* j = new Dog();
+	const	AAnimal* i = new Cat();
 	delete j; //should not create a leak
 	delete i;
 }
@@ -157,7 +157,7 @@ void	animal_array_test(void)
 {
 	std::cout << YELLOW << "----------ANIMAL ARRAY TEST----------\n" << RESET;
 
-	const Animal	*animals[10];
+	const AAnimal	*animals[10];
 
 	// Half of them, it's Cat
 	for (int i = 0; i <= 4; i++)
