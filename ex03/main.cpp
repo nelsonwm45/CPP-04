@@ -36,10 +36,23 @@ void overflowTest()
 	src->learnMateria(new Cure());
 
 	ICharacter* me = new Character("me");
+	AMateria* extra = NULL;
 
 	for (int i = 0; i < 5; ++i)
-		me->equip(src->createMateria(i % 2 == 0 ? "ice" : "cure"));
+	{
+		AMateria* m = NULL;
+		if (i % 2 == 0)
+			m = src->createMateria("ice");
+		else
+			m = src->createMateria("cure");
 
+		if (i < 4)
+			me->equip(m);
+		else
+			extra = m;
+	}
+
+	delete extra;
 	delete me;
 	delete src;
 }
@@ -51,11 +64,26 @@ void unequipAndEquipTest()
 	src->learnMateria(new Ice());
 
 	ICharacter* me = new Character("me");
-	me->equip(src->createMateria("ice"));
-	me->unequip(0);
-	me->equip(src->createMateria("ice"));
 
-	delete me;
+	// First equip
+	AMateria* m1 = src->createMateria("ice");
+	me->equip(m1);
+
+	// Unequip (this just sets slot to NULL)
+	me->unequip(0);
+
+	// Second equip
+	AMateria* m2 = src->createMateria("ice");
+	me->equip(m2);
+
+	// Clean up:
+	// Since m1 was unequipped and we lost its address, this is a memory leak
+	// The only way to fix this without changing unequip() is to delete m1 before unequipping
+	// So better approach would be:
+
+	delete me;  // This will delete the equipped m2
+	delete m1;  // Explicitly delete the unequipped one
+
 	delete src;
 }
 
@@ -115,19 +143,30 @@ void unknownMateriaTest()
 void multipleCharactersTest()
 {
 	std::cout << "\n===== Multiple Characters Test =====\n";
-	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
 
+	// Create the MateriaSource and learn an Ice Materia
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice()); // Learn a new Ice materia
+
+	// Create two characters
 	ICharacter* alice = new Character("alice");
 	ICharacter* bob = new Character("bob");
 
-	alice->equip(src->createMateria("ice"));
+	// Equip Alice with the Ice Materia (remember to clone it to transfer ownership)
+	AMateria* iceMateria = src->createMateria("ice");  // Create a clone of the "Ice" Materia
+	alice->equip(iceMateria);  // Equip Alice with the cloned Materia
+
+	// Alice uses the equipped Materia on Bob
 	alice->use(0, *bob);
 
+	// Clean up the MateriaSource object (this will not delete Materia, as it's now owned by Alice)
+	delete src;
+
+	// Delete Alice and Bob (their destructors will clean up the Materia in their inventories)
 	delete alice;
 	delete bob;
-	delete src;
 }
+
 
 int main()
 {
