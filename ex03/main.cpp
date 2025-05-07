@@ -18,12 +18,12 @@ void basicTest()
 	tmp = src->createMateria("cure");
 	me->equip(tmp);
 
-	ICharacter* bob = new Character("bob");
+	ICharacter* whisca = new Character("whisca");
 
-	me->use(0, *bob);
-	me->use(1, *bob);
+	me->use(0, *whisca);
+	me->use(1, *whisca);
 
-	delete bob;
+	delete whisca;
 	delete me;
 	delete src;
 }
@@ -91,14 +91,14 @@ void invalidIndexTest()
 {
 	std::cout << "\n===== Invalid Index Test =====\n";
 	ICharacter* me = new Character("me");
-	ICharacter* bob = new Character("bob");
+	ICharacter* whisca = new Character("whisca");
 
-	me->use(-1, *bob);
-	me->use(10, *bob);
+	me->use(-1, *whisca);
+	me->use(10, *whisca);
 	me->unequip(-1);
 	me->unequip(10);
 
-	delete bob;
+	delete whisca;
 	delete me;
 }
 
@@ -149,22 +149,22 @@ void multipleCharactersTest()
 	src->learnMateria(new Ice()); // Learn a new Ice materia
 
 	// Create two characters
-	ICharacter* alice = new Character("alice");
-	ICharacter* bob = new Character("bob");
+	ICharacter* persian = new Character("persian");
+	ICharacter* whisca = new Character("whisca");
 
-	// Equip Alice with the Ice Materia (remember to clone it to transfer ownership)
+	// Equip persian with the Ice Materia (remember to clone it to transfer ownership)
 	AMateria* iceMateria = src->createMateria("ice");  // Create a clone of the "Ice" Materia
-	alice->equip(iceMateria);  // Equip Alice with the cloned Materia
+	persian->equip(iceMateria);  // Equip persian with the cloned Materia
 
-	// Alice uses the equipped Materia on Bob
-	alice->use(0, *bob);
+	// persian uses the equipped Materia on whisca
+	persian->use(0, *whisca);
 
-	// Clean up the MateriaSource object (this will not delete Materia, as it's now owned by Alice)
+	// Clean up the MateriaSource object (this will not delete Materia, as it's now owned by persian)
 	delete src;
 
-	// Delete Alice and Bob (their destructors will clean up the Materia in their inventories)
-	delete alice;
-	delete bob;
+	// Delete persian and whisca (their destructors will clean up the Materia in their inventories)
+	delete persian;
+	delete whisca;
 }
 
 
