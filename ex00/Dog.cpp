@@ -19,7 +19,7 @@ Dog::Dog(const Dog &other):
 // Copy Assignment Operator
 Dog	&Dog::operator=(const Dog &other)
 {
-	std::cout << YELLOW << "[Dog] " << GREEN << "Copy assignment operator called\n" << RESET;w
+	std::cout << YELLOW << "[Dog] " << GREEN << "Copy assignment operator called\n" << RESET;
 	if (this != &other)
 	{
 		this->_type = other._type;
